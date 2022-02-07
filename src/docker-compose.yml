@@ -1,0 +1,16 @@
+version: "3.9"
+networks:
+  localdev:
+    external: true  
+services:
+  api:
+    build: .
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    ports:
+      - "5080:5080"
+    networks:
+      - localdev
+    restart: unless-stopped
