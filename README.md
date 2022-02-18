@@ -48,3 +48,13 @@ POST http://localhost:5080/Customers/GetCustomers?$expand=customers($filter=inde
 ```http
 POST http://localhost:5080/Customers/GetCustomers?$expand=customers($expand=tags;$select=tags)
 ```
+
+#### Get first 2 customers with tags ordered by city asc
+```http
+POST http://localhost:5080/Customers/GetCustomers?$expand=customers($expand=tags;$orderby=city;$top=2)
+```
+
+#### Get second 2 customers with tags ordered by city as
+```http
+POST http://localhost:5080/Customers/GetCustomers?$expand=customers($expand=tags;$orderby=city;$top=2;$skip=2)
+```
