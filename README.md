@@ -34,12 +34,12 @@ POST http://localhost:5080/Customers/GetCustomers
 POST http://localhost:5080/Customers/GetCustomers?$expand=customers($select=id)
 ```
 
-#### Get all customers with first name contains 'Jam'
+#### Get all customers with tags and filtered by the first name contains 'Jam'
 ```http
-POST http://localhost:5080/Customers/GetCustomers?$expand=customers($filter=contains(first_name, 'Jam'))
+POST http://localhost:5080/Customers/GetCustomers?$expand=customers($filter=contains(first_name, 'Jam');$expand=tags)
 ```
 
-#### Get all customers excluding with first name not contain 'Jam' and ordered by city DESC
+#### Get all customers without tags filtered by the firstname not contain 'Jam' and ordered by city DESC
 ```http
 POST http://localhost:5080/Customers/GetCustomers?$expand=customers($filter=indexof(first_name, 'Jam') eq -1;$orderby=city desc)
 ```
