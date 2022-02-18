@@ -42,6 +42,7 @@ internal sealed class CustomerReadService : ICustomerReadService
         var result = new Customers
         {
             CustomersList = customersList,
+            TotalCount = customersList.Count,
         };
 
         return result;
