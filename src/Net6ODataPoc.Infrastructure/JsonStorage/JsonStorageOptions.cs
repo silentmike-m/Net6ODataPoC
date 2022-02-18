@@ -1,4 +1,4 @@
-﻿namespace SignalRPoc.Server.Infrastructure.JsonStorage;
+﻿namespace Net6ODataPoc.Infrastructure.JsonStorage;
 
 public sealed record JsonStorageOptions
 {

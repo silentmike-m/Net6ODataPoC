@@ -9,6 +9,7 @@ internal sealed class CustomerProfile : Profile
     public CustomerProfile()
     {
         this.CreateMap<SourceCustomer, TargetCustomer>()
+            .ForMember(x => x.Id, opt => opt.MapFrom(o => Guid.NewGuid()))
             .ForMember(target => target.Address, options => options.MapFrom(source => source.Address))
             .ForMember(target => target.City, options => options.MapFrom(source => source.City))
             .ForMember(target => target.CompanyName, options => options.MapFrom(source => source.Company))

@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Net6ODataPoc.Infrastructure.JsonStorage;
 using Net6ODataPoc.Infrastructure.JsonStorage.Interfaces;
 using Net6ODataPoc.Infrastructure.JsonStorage.Services;
-using SignalRPoc.Server.Infrastructure.JsonStorage;
 
 public static class DependencyInjection
 {

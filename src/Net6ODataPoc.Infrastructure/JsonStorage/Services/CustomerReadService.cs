@@ -1,5 +1,4 @@
 ﻿namespace Net6ODataPoc.Infrastructure.JsonStorage.Services;
-
 using System.Text;
 using System.Text.Json;
 using AutoMapper;
@@ -8,10 +7,12 @@ using Net6ODataPoc.Application.Customers.ViewModels;
 using Net6ODataPoc.Domain.Entities;
 using Net6ODataPoc.Infrastructure.JsonStorage.Constants;
 using Net6ODataPoc.Infrastructure.JsonStorage.Interfaces;
-using SignalRPoc.Server.Infrastructure.JsonStorage;
 
 internal sealed class CustomerReadService : ICustomerReadService
 {
+    private const string TAG_ID = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+    private const string TAG_NAME = "random tag name";
+
     private readonly IMapper mapper;
     private readonly JsonStorageOptions options;
 
@@ -31,11 +32,37 @@ internal sealed class CustomerReadService : ICustomerReadService
 
         var customersList = this.mapper.Map<IReadOnlyList<Customer>>(customers);
 
+        foreach (var customer in customersList)
+        {
+            var tags = CreateCustomerTags(customer.FirstName, customer.Id);
+
+            customer.CustomerTags = tags;
+        }
+
         var result = new Customers
         {
             CustomersList = customersList,
         };
 
         return result;
+    }
+
+    private List<CustomerTag> CreateCustomerTags(string customerName, Guid customerId)
+    {
+        var tags = new List<CustomerTag>
+        {
+            new()
+            {
+                Id = customerId,
+                Name = customerName,
+            },
+            new()
+            {
+                Id = Guid.Parse(TAG_ID),
+                Name = TAG_NAME,
+            },
+        };
+
+        return tags;
     }
 }

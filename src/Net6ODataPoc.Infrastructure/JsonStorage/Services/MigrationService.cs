@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Net6ODataPoc.Infrastructure.JsonStorage.Constants;
 using Net6ODataPoc.Infrastructure.JsonStorage.Interfaces;
-using SignalRPoc.Server.Infrastructure.JsonStorage;
 
 public sealed class MigrationService : IMigrationService
 {

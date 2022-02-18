@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.OData;
 using Net6ODataPoc.Application;
 using Net6ODataPoc.Infrastructure;
@@ -32,9 +33,29 @@ try
 
     builder.Services
         .AddControllers()
-        .AddOData(options => options.Select().Filter().OrderBy().Expand().Count().SkipToken().SetMaxTop(100));
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            options.JsonSerializerOptions.WriteIndented = true;
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+        })
+        .AddOData(options =>
+            {
+                options
+                    .Count()
+                    .Expand()
+                    .Filter()
+                    .OrderBy()
+                    .Select()
+                    .SetMaxTop(null)
+                    .SkipToken();
+            }
+        );
+
     builder.Services
         .AddEndpointsApiExplorer();
+
     builder.Services
         .AddSwaggerGen();
 
