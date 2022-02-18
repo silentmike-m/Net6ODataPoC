@@ -26,12 +26,12 @@ Start the server
 
 #### Get all customers
 ```http
-  POST http://localhost:5080/Customers/GetCustomers
+POST http://localhost:5080/Customers/GetCustomers
 ```
 
 #### Get all customers ids
 ```http
-  POST http://localhost:5080/Customers/GetCustomers?$expand=customers($select=id)
+POST http://localhost:5080/Customers/GetCustomers?$expand=customers($select=id)
 ```
 
 #### Get all customers with first name contains 'Jam'
