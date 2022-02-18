@@ -42,6 +42,6 @@ Start the server
 ```POST http://localhost:5080/Customers/GetCustomers?$expand=customers($filter=indexof(first_name, 'Jam') eq -1;$orderby=city desc)
 ```
 
-#### Get all customers tags distinct
-```POST http://localhost:5080/Customers/GetCustomers?$expand=customers($filter=indexof(first_name, 'Jam') eq -1;$orderby=city desc)
+#### Get all customers tags
+```POST http://localhost:5080/Customers/GetCustomers?$expand=customers($expand=tags;$select=tags)
 ```
