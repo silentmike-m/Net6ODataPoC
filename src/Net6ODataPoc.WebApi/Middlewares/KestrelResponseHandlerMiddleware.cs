@@ -1,5 +1,6 @@
 ﻿namespace Net6ODataPoc.WebApi.Middlewares;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
@@ -7,9 +8,9 @@ using Microsoft.IO;
 using Net6ODataPoc.Application.Common;
 using Net6ODataPoc.WebApi.Extensions;
 
+[ExcludeFromCodeCoverage]
 internal sealed class KestrelResponseHandlerMiddleware
 {
-
     private const string APPLICATION_JSON = "application/json; charset=utf-8";
     private const string OK_STATUS_CODE = "OK";
 
@@ -22,9 +23,6 @@ internal sealed class KestrelResponseHandlerMiddleware
 
     public async Task Invoke(HttpContext httpContext)
     {
-        await next(httpContext);
-        return;
-
         var originalResponseBodyStream = httpContext.Response.Body;
 
         var recyclableMemoryStreamManager = new RecyclableMemoryStreamManager();

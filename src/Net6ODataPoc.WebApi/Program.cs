@@ -38,19 +38,15 @@ try
             options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             options.JsonSerializerOptions.WriteIndented = true;
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
         })
         .AddOData(options =>
-            {
-                options
-                    .Count()
-                    .Expand()
-                    .Filter()
-                    .OrderBy()
-                    .Select()
-                    .SetMaxTop(null)
-                    .SkipToken();
-            }
+            options
+                .Expand()
+                .Filter()
+                .OrderBy()
+                .Select()
+                .SetMaxTop(null)
+                .SkipToken()
         );
 
     builder.Services

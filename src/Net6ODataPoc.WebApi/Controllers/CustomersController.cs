@@ -12,8 +12,7 @@ public sealed class CustomersController : ControllerBase
 
     public CustomersController(IMediator mediator) => this.mediator = mediator;
 
-    [HttpPost(Name = "GetCustomers")]
-    [EnableQuery]
+    [EnableQuery, HttpPost(Name = "GetCustomers")]
     public async Task<Customers> GetCustomers()
     {
         var request = new GetCustomers();

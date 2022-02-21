@@ -48,7 +48,7 @@ internal sealed class CustomerReadService : ICustomerReadService
         return result;
     }
 
-    private List<CustomerTag> CreateCustomerTags(string customerName, Guid customerId)
+    private static List<CustomerTag> CreateCustomerTags(string customerName, Guid customerId)
     {
         var tags = new List<CustomerTag>
         {
